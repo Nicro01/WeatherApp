@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const apiKey = "709854035951160994921bbf2abd5c02";
+  const apiKey = process.env.MY_API_KEY;
   const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
 
   function fetchWeatherData(card, city) {
