@@ -1,7 +1,5 @@
 # WeatherApp
 
-![WeatherApp](https://github.com/Nicro01/WeatherApp/blob/main/assets/weatherapp.png)
-
 This repository contains the WeatherApp, a web application that provides real-time weather information for a given location. The application is built using HTML, CSS, and JavaScript, and utilizes the OpenWeatherMap API to fetch weather data.
 
 ## Features
