@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const apiKey = process.env.MY_API_KEY;
+  const apiKey = "709854035951160994921bbf2abd5c02";
   const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
   var cards = document.getElementsByClassName("card");
   const ul = document.querySelector("#ul-cards");
@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const spanTempo = card.querySelector("#temp_icon");
 
     const url = `${apiUrl}?q=${city}&appid=${apiKey}&units=metric`;
+
+    function openModalError() {
+      modalError.style.display = "block";
+    }
 
     fetch(url)
       .then((response) => response.json())
@@ -51,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           ul.style.display = "flex";
         }
+        openModalError();
       });
   }
 
@@ -76,14 +81,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("modal");
   const closeBtn = document.getElementsByClassName("close")[0];
   const addCardForm = document.getElementById("addCardForm");
+  const modalError = document.getElementById("modalError");
 
   function openModal() {
     modal.style.display = "block";
   }
 
+  
+
   function closeModal() {
     modal.style.display = "none";
   }
+
+  function closeModalError() {
+    modalError.style.display = "none";
+  }
+
+  const closeError = document.getElementById("closeError");
+  closeError.addEventListener("click", closeModalError)
 
   openModalBtn.addEventListener("click", openModal);
   closeBtn.addEventListener("click", closeModal);
