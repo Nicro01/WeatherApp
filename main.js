@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "709854035951160994921bbf2abd5c02";
   const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
+  var cards = document.getElementsByClassName("card");
+  const ul = document.querySelector("#ul-cards");
 
   function fetchWeatherData(card, city) {
     const temp = card.querySelector("#temp");
     const localizacao = card.querySelector("#location");
     const spanTempo = card.querySelector("#temp_icon");
-    const cityTime = card.querySelector("#city-time");
 
     const url = `${apiUrl}?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -41,30 +42,18 @@ document.addEventListener("DOMContentLoaded", function () {
             spanTempo.textContent = "☀";
           }
         }
-
-        const timezoneOffset = data.timezone;
-
-        setInterval(() => {
-          const currentTimestamp = Math.floor(Date.now() / 1000);
-          const localTime = new Date(
-            (currentTimestamp + timezoneOffset) * 1000
-          );
-          const formattedTime = localTime.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          });
-
-          cityTime.textContent = "City Time: " + formattedTime;
-        }, 1000);
       })
       .catch((error) => {
         console.log("Error fetching weather data:", error);
+        card.parentElement.remove();
+        if (cards.length <= 0) {
+          ul.style.display = "none";
+        } else {
+          ul.style.display = "flex";
+        }
       });
   }
 
-  var cards = document.getElementsByClassName("card");
-  const ul = document.querySelector("#ul-cards");
   if (cards.length <= 0) {
     ul.style.display = "none";
   } else {
@@ -179,11 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
     div.addEventListener("click", function () {
       toggleFullScreen(div);
     });
-
-    const horario = document.createElement("span");
-    horario.setAttribute("id", "city-time");
-
-    div.appendChild(horario);
 
     cityInput.value = "";
 
