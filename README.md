@@ -11,7 +11,7 @@ This repository contains the WeatherApp, a web application that provides real-ti
 
 ## Preview
 
-![WeatherApp Preview](https://github.com/Nicro01/WeatherApp/blob/main/assets/preview.gif)
+![WeatherApp Preview](https://github.com/Nicro01/WeatherApp/blob/main/assets/preview.gif?s=200)
 
 ## Installation
 
